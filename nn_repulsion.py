@@ -10,7 +10,7 @@ def nn_repulsion(Z, atom_coordinates):
     else:
         for i in range(n_atoms):
             for j in range(i + 1, n_atoms):
-                distance = np.sum((atom_coordinates[i] - atom_coordinates[j]) ** 2)
+                distance = np.linalg.norm(atom_coordinates[i] - atom_coordinates[j])
                 energy = energy + Z[i] * Z[j] / distance
 
     return energy

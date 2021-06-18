@@ -1,12 +1,6 @@
-import sympy as sp
-from sympy import oo
 import numpy as np
-from itertools import product
-from scipy.linalg import eig
-from sympy import diff
-import time as time
-import matplotlib.pyplot as plt
-from sympy.plotting import plot
+import sympy as sp
+
 
 class Gaussian():
     def __init__(self, alpha, coeff, coordinates=None, l1=0,l2=0,l3=0):
@@ -46,8 +40,3 @@ class Molecule:
         self.basis = []
         for atom in atoms:
             self.basis += atom.orbitals
-            # for each in atom.orbitals:
-            #     for primitive_fn in each.primitives:
-            #         print(primitive_fn.explicit_fn)
-
-            #print(" ", self.basis)

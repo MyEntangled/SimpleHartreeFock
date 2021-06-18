@@ -1,11 +1,6 @@
 import numpy as np
 from scipy.linalg import fractional_matrix_power
-
-def sort_eigs(eigvecs, eigvals):
-    idx = eigvals.argsort()
-    sorted_eigvals = eigvals[idx]
-    sorted_eigvecs = eigvecs[:,idx]
-    return sorted_eigvecs, sorted_eigvals
+from helper_fn import sort_eigs
 
 def fock_energy(D, H0, F):
     dim = D.shape[0]
@@ -13,7 +8,7 @@ def fock_energy(D, H0, F):
 
     for n in range(dim):
         for m in range(dim):
-            E += D[n,m]*(H0[n,m] + F[n,m])
+            E += D[n][m]*(H0[n][m] + F[n][m])
 
     return E
 
@@ -49,7 +44,8 @@ def SCF(H0, EE_Repl, S, N_elec):
     eigvals, V = np.linalg.eigh(S)
     D = np.diag(eigvals)
 
-    X = V @ fractional_matrix_power(D, -0.5) @ V.T
+    #X = V @ fractional_matrix_power(D, -0.5) @ V.T
+    X = V @ fractional_matrix_power(D, -0.5)
 
     F = H0
     Fprime = X.T @ F @ X

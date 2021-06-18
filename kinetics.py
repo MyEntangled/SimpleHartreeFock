@@ -25,13 +25,7 @@ def kinetics_integral(primitive_1, primitive_2):
         return primitive_kinetics
 
     else:
-        r = sp.Symbol('r')
-        primitive_overlap = sp.integrate(primitive_1.explicit * primitive_2.explicit,
-                                         (r, 0., np.inf))
-        N = (sp.integrate(primitive_1.explicit * primitive_1.explicit, (r, 0., np.inf)) * sp.integrate(primitive_2.explicit * primitive_2.explicit, (r, 0., np.inf)))**(1/2)
-        primitive_overlap = primitive_overlap / N
-
-        return primitive_overlap
+        pass
 
 
 def kinetics(molecule):
